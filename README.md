@@ -4,18 +4,22 @@
 ![GitHub](https://img.shields.io/github/license/luzhixing12345/C-libs)
 ![GitHub last commit](https://img.shields.io/github/last-commit/luzhixing12345/C-libs)
 
+some common util C libraries and API document for quick check
+
 ## Content
 
-- [cjson](cjson.c) : json parser
-- [cclo](cclo.c) : command line output
-- [cregex](cregex.c) : regex match
+- [CCjson](CCjson.c) : json parser
+- [CCclo](CCclo.c) : command line output
+- [CCstring](CCstring.c) : string(char *) method
+- [CCregex](CCregex.c) : regex match
 
 ## Install and Usage
 
+download `.h` & `.c` file you need and check API or example usage in [API document](https://luzhixing12345.github.io/C-libs/)
+
 |LIB|.h|.c|
 |:--:|:--:|:--:|
-|cjson|[download](1)|[download](2)|
-|cclo|[download](3)|[download](4)|
-|cregex|[download](5)|[download](6)|
-
-[API document](https://luzhixing12345.github.io/C-libs/)
+|CCjson|[download](1)|[download](2)|
+|CCclo|[download](3)|[download](4)|
+|CCstring|[download](1)|[download](1)|
+|CCregex|[download](5)|[download](6)|
