@@ -8,10 +8,10 @@ some common util C libraries and API document for quick check
 
 ## Content
 
-- [CCjson](CCjson.c) : json parser
-- [CCclo](CCclo.c) : command line output
-- [CCstring](CCstring.c) : string(char *) method
-- [CCregex](CCregex.c) : regex match
+- [CCjson](src/CCjson.c) : json parser
+- [CCclo](src/CCclo.c) : command line output
+- [CCstring](src/CCstring.c) : string(char *) method
+- [CCregex](src/CCregex.c) : regex match
 
 ## Install and Usage
 
