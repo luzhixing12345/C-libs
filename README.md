@@ -6,8 +6,9 @@
 
 ## Content
 
-- [cjson.h](cjson.c) : json parser
-- [cclo.h](cclo.c) : command line output
+- [cjson](cjson.c) : json parser
+- [cclo](cclo.c) : command line output
+- [cregex](cregex.c) : regex match
 
 ## Install and Usage
 
@@ -15,5 +16,6 @@
 |:--:|:--:|:--:|
 |cjson|[download](1)|[download](2)|
 |cclo|[download](3)|[download](4)|
+|cregex|[download](5)|[download](6)|
 
 [API document](https://luzhixing12345.github.io/C-libs/)
