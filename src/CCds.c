@@ -1,0 +1,6 @@
+
+
+
+void insertNode(int x) {
+
+}
