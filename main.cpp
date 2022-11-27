@@ -1,34 +1,53 @@
+
 #include "src/reflect/classFactory.h"
-#include "src/reflect/test.h"
+
+class Test{
+public:
+    Test(){ std::cout << "call Test Constructor fun" << std::endl; }
+    ~Test(){ std::cout << "call Test Destructor fun" << std::endl; }
+    void print(){ std::cout << "call Test print fun\n" << std::endl; }
+};
 
 void* create_Test(){
     Test *t = new Test;
     return (t == NULL)? NULL:t;
 }
 
-int another_funtion() {
-    std::cout << "called another function" << std::endl;
-    return 1;
+int function() {
+    std::cout << "called function" << std::endl;
+    return 10;
+}
+
+int function_args(int a, int b) {
+    std::cout << "called function_args" << std::endl;
+    std::cout << "a = " << a << " | b = " << b << std::endl;
+    int c = a+b;
+    return c;
 }
 
 int main(){
     //注册
     std::string class_name = "Test";
-    std::string function_name = "another_function";
+    std::string function_name = "function";
+    std::string function_with_argument_name = "function_args";
 
-    void *p = (void*)another_funtion;
-
-    REGISTER(class_name, create_Test);
-    // REGISTER(function_name,);
-
+    REGISTER(class_name, (void*)create_Test); // 注册类
+    REGISTER(function_name,(void*)function);  // 注册函数
+    REGISTER(function_with_argument_name,(void*)function_args);  // 注册函数
     //获取类对象
-    Test *t = (Test*) REFLECT(class_name);
-    if (!t){
-        std::cout << "get instance Test err;" << std::endl;
-        return 1;
-    }
-    t->print();
-    // REFLECT(function_name);
-    delete t;
+    void *class_p = REFLECT(class_name);
+    Test *test = REFLECT_TYPE(Test*,class_p,(void))(); // 类的反射
+    test->print(); // 可以搭配多态的虚函数使用
+    delete test;
+
+    //获取函数
+    void *func_p = REFLECT(function_name);
+    int return_value = REFLECT_TYPE(int,func_p,(void))();
+    std::cout << "return value = " << return_value << std::endl << std::endl;
+
+    //函数传参
+    void *func_args_p = REFLECT(function_with_argument_name);
+    return_value = REFLECT_TYPE(int, func_args_p, (int,int))(10,20);
+    std::cout << "return value = " << return_value << std::endl;
     return 0;
 }

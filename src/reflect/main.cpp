@@ -4,8 +4,8 @@
 class Test{
 public:
     Test(){ std::cout << "call Test Constructor fun" << std::endl; }
-    ~Test(){ std::cout << "call Test Destructor fun" << std::endl; }
-    void print(){ std::cout << "call Test print fun\n" << std::endl; }
+    ~Test(){ std::cout << "call Test Destructor fun\n" << std::endl; }
+    void print(){ std::cout << "call Test print fun" << std::endl; }
 };
 
 void* create_Test(){
@@ -20,7 +20,7 @@ int function() {
 
 int function_args(int a, int b) {
     std::cout << "called function_args" << std::endl;
-    std::cout << "a = " << a << "| b = " << b << std::endl;
+    std::cout << "a = " << a << " | b = " << b << std::endl;
     int c = a+b;
     return c;
 }
@@ -36,17 +36,18 @@ int main(){
     REGISTER(function_with_argument_name,(void*)function_args);  // 注册函数
     //获取类对象
     void *class_p = REFLECT(class_name);
-    Test *test = REFLECT_TYPE(Test*,class_p)(); // 类的反射
+    Test *test = REFLECT_TYPE(Test*,class_p,(void))(); // 类的反射
     test->print(); // 可以搭配多态的虚函数使用
     delete test;
 
     //获取函数
     void *func_p = REFLECT(function_name);
-    int return_value = REFLECT_TYPE(int,func_p)();
+    int return_value = REFLECT_TYPE(int,func_p,(void))();
     std::cout << "return value = " << return_value << std::endl << std::endl;
 
+    //函数传参
     void *func_args_p = REFLECT(function_with_argument_name);
-    return_value = REFLECT_TYPE(int, func_args_p)();
+    return_value = REFLECT_TYPE(int, func_args_p, (int,int))(10,20);
     std::cout << "return value = " << return_value << std::endl;
     return 0;
 }

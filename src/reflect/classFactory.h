@@ -28,8 +28,8 @@ private:
     std::map<std::string, void*> my_map;
 }; 
 
-#define REGISTER(__className,__callbackFunc) ClassFactory::getInstance().registClass(__className,__callbackFunc)
-#define REFLECT(__className) ClassFactory::getInstance().getClassByName(__className)
-#define REFLECT_TYPE(__type,__class_p) (*(__type (*)(void))__class_p)
+#define REGISTER(__name,__callbackFunc) ClassFactory::getInstance().registClass(__name,__callbackFunc)
+#define REFLECT(__name) ClassFactory::getInstance().getClassByName(__name)
+#define REFLECT_TYPE(__return_type,__func_p,__args) (*(__return_type (*)__args)__func_p)
 
 #endif
