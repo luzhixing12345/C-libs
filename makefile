@@ -1,9 +1,8 @@
 
 .PHONY: clean
 
-main: test.c
-	gcc $^ -o $@
-	./$@
+main: main.cpp
+	g++ $^ -o $@
 
 clean:
 	-rm -f main
